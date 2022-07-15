@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>CRUD Form</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+    </head>
+    <body>
+        <div>
+            <h1>Registration Form</h1>
+            <hr class="">
+            <div class="">
+                <label>Name :</label>
+                <input id="fnid" type="text" placeholder="Piyu Gade"><br><br>
+                <label>Email :</label>
+                <input id="mailid" type="email" placeholder="abc@gmail.com"><br><br>
+                <label>Contact :</label>
+                <input id="mobid" type="tel" placeholder="+91"><br><br>
+                <label>Gender :</label>
+                <input id="mid" type="radio" name="gender" value="Male" checked>Male
+                <input id="fid" type="radio" name="gender" value="Female">Female<br><br>
+                <button type="button" onclick="list()">Add</button>
+                <!-- <button type="button" onclick="data()">Submit</button> -->
+            </div>
+        </div>
+        <div></div>
+        <script>
+            function list() {
+                let table = document.createElement("table");
+                let row1 = document.createElement("tr");
+
+                // ------IIFE----
+                let table_heading = (function () {
+                    let details = [
+                        "SrNo",
+                        "First Name",
+                        "Email-Id",
+                        "Mobile No.",
+                        "Gender",
+                        "Edit/Delete"
+                    ]
+                    // ----map----
+                    let heading = details.map(ele => {
+                        return document.createTextNode(ele);
+                    })
+                    // console.log(heading);
+                    for (var i = 0; i <= 5; i++) {
+                        var col = document.createElement("th");
+                        // console.log(co);
+                        col.append(heading[i]);
+                        row1.append(col);
+                        table.append(row1);
+                    }
+                    console.log(table);
+                })();
+
+                // let srno =
+                // let fn =document.createTextNode("First Name");
+                // let mail = document.createTextNode("Email-Id");
+                // let Contact = document.createTextNode("Mobile No.");
+
+                // var count = 1;
+            // end of fun}
+
+            // function data() {
+            let row2 = document.createElement("tr");
+
+            for(var j=0;j<=5;j++){
+                var col2 = document.createElement("td");
+                row2.append(col2);
+                table.append(row2);
+            }
+
+            let fn = document.getElementById("fnid").value;
+            let mail = document.getElementById("mailid").value;
+            let mob = document.getElementById("mobid").value;
+            let genderm = document.getElementById("mid").value;
+            let genderf = document.getElementById("fid").value;
+            // console.log(genderf);
+
+                let new_data = [];
+                new_data.push(fn);
+                new_data.push(mail);
+                new_data.push(mob);
+                new_data.push(genderf);
+                new_data.push(genderm);
+
+                console.log(new_data);
+            
+        }
+        </script>
+    </body>
+</html>
