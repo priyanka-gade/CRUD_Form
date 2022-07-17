@@ -20,14 +20,19 @@
                 <label>Contact :</label>
                 <input id="mobid" type="tel" placeholder="+91"><br><br>
                 <label>Gender :</label>
-                <input id="gid" type="radio" name="gender" value="Male" checked>Male
-                <input id="gid" type="radio" name="gender" value="Female">Female<br><br>
+                <select id="gender_id">
+                    <option value="Male" id="mid">Male</option>
+                    <option value="Female" id="fid">Female</option>
+                    <option value="Other" id="oid">Other</option>
+                </select><br><br>
+                <!-- <input id="gid" type="radio" name="gender" value="Male" checked>Male
+                <input id="gid" type="radio" name="gender" value="Female">Female<br><br> -->
                 <button type="button" onclick="list()" class="font-bold border-black border-2 bg-gray-300 rounded p-1">Add</button>
                 <button type="button" class="font-bold border-black border-2 bg-gray-300 rounded p-1">Submit</button>
             </form>
         </div><br>
         <div id="mydiv">
-            <table id="mytab" class="border-2 border-black">
+            <table id="mytab" class="border-2 border-black m-4">
                 <tr>
                     <th class="border border-2 border-black p-2">SrNo.</th>
                     <th class="border border-2 border-black p-2">First Name</th>
@@ -35,12 +40,14 @@
                     <th class="border border-2 border-black p-2">Mobile No.</th>
                     <th class="border border-2 border-black p-2">Gender</th>
                     <th class="border border-2 border-black p-2">Edit/Delete</th>
+                    <th class="border border-2 border-black p-2">Edit/Delete</th>
                 </tr>
             </table>
                     
         </div>
                     <!-- <a><i id="edit" class='fas fa-edit'></i></a>
                     <a><i id="delete" class="fa fa-trash" aria-hidden="true" ></i></a> -->
+                    <!-- <p id="myp"></p> -->
         <script>
             function list() {
 
@@ -92,7 +99,7 @@
                     let fn = document.getElementById("fnid").value;
                     let mail = document.getElementById("mailid").value;
                     let mob = document.getElementById("mobid").value;
-                    let genderm = document.getElementById("gid").value;
+                    let genderm = document.getElementById("gender_id").value;
                     // let edit = document.getElementById("edit");
                     // edit.setAttribute("class","visible");
                     // let del = document.getElementById("delete");
@@ -100,6 +107,11 @@
                     let edit = document.createElement("a");
                     let edi =document.createElement("i");
                     edi.setAttribute("class","fas fa-edit");
+                    function myedit(){
+
+                    }
+                    edi.addEventListener("click", myedit);
+
                     edit.append(edi);
                     // console.log(edit);
                     let delte = document.createElement("a");
@@ -109,10 +121,17 @@
                     delte.append(del);
                     // console.log(delte);
                     
-                    // let edit = document.getElementById("edit").style.visibility= visible;
-                    // let del = document.getElementById("delete").style.visibility= visible; 
-                    // let genderf = document.getElementById("fid").value;
-                    // console.log(genderf);
+                    // let p = document.getElementById("myp");
+                    // let num = document.createTextNode("0");
+                    // p.append(num);
+                    // console.log(p);
+                    // var count = 0;
+                    //     for(var i=1;i<=10;i++){
+                    //         count+=1;
+                    //         var srno = p.innerText=count;
+                    // }
+                    // console.log(srno);
+                    
 
                     let new_data = [];
                     new_data.push(1);
@@ -121,14 +140,16 @@
                     new_data.push(mob);
                     // new_data.push(genderf);
                     new_data.push(genderm);
-                    new_data.push(edit,delte);
+                    new_data.push(edit);
+                    new_data.push(delte);
+                    
 
                     console.log(new_data);
 
                     let enterd_data = new_data.map(ele => ele);
                     // console.log(enterd_data);
 
-                    for (var j = 0; j <= 5; j++) {
+                    for (var j = 0; j <= 6; j++) {
                         var col2 = document.createElement("td");
                         col2.append(enterd_data[j])
                         row2.append(col2);
