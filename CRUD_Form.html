@@ -26,22 +26,22 @@
             </form>
         </div><br>
         <div id="mydiv">
-            <table id="mytab" class="border-2 border-black invisible">
+            <table id="mytab" class="border-2 border-black">
                 <tr>
                     <th class="border border-2 border-black p-2">SrNo.</th>
                     <th class="border border-2 border-black p-2">First Name</th>
                     <th class="border border-2 border-black p-2">Email-Id</th>
                     <th class="border border-2 border-black p-2">Mobile No.</th>
                     <th class="border border-2 border-black p-2">Gender</th>
-                    <th class="p-2">Edit/Delete</th>
+                    <th class="border border-2 border-black p-2">Edit/Delete</th>
                 </tr>
             </table>
         </div>
         <script>
             function list() {
 
-                var tab = document.getElementById("mydiv");
-                tab.setAttribute("class","visible")
+                // var tab = document.getElementById("mydiv");
+                // tab.setAttribute("class","visible")
 
                /* let table = document.createElement("table");
                 let row1 = document.createElement("tr");
@@ -93,6 +93,7 @@
                     // console.log(genderf);
 
                     let new_data = [];
+                    new_data.push(1);
                     new_data.push(fn);
                     new_data.push(mail);
                     new_data.push(mob);
@@ -104,14 +105,17 @@
                     let enterd_data = new_data.map(ele => ele);
                     // console.log(enterd_data);
 
-                    for (var j = 0; j <= 3; j++) {
+                    for (var j = 0; j <= 4; j++) {
                         var col2 = document.createElement("td");
                         col2.append(enterd_data[j])
                         row2.append(col2);
                         table.append(row2);
+                        col2.setAttribute("class", "border border-black text-center p-1");
                         // console.log(table);
                     }
                     console.log(table);
+
+
                 // }
             }
         </script>
