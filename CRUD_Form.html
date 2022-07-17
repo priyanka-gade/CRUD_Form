@@ -6,6 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>CRUD Form</title>
         <script src="https://cdn.tailwindcss.com"></script>
+        <script src="https://kit.fontawesome.com/a076d05399.js"></script>
     </head>
     <body>
         <div class="grid place-content-center text-center border border-2 border-black w-96 m-4">
@@ -36,6 +37,8 @@
                     <th class="border border-2 border-black p-2">Edit/Delete</th>
                 </tr>
             </table>
+                    <i id="edit" class='fas fa-edit invisible'></i>
+                    <i id="delete" class="fa fa-trash invisible" aria-hidden="true" ></i>
         </div>
         <script>
             function list() {
@@ -89,6 +92,12 @@
                     let mail = document.getElementById("mailid").value;
                     let mob = document.getElementById("mobid").value;
                     let genderm = document.getElementById("gid").value;
+                    let edit = document.getElementById("edit");
+                    edit.setAttribute("class","visible");
+                    let del = document.getElementById("delete");
+                    del.setAttribute("class","visible");
+                    // let edit = document.getElementById("edit").style.visibility= visible;
+                    // let del = document.getElementById("delete").style.visibility= visible; 
                     // let genderf = document.getElementById("fid").value;
                     // console.log(genderf);
 
@@ -99,13 +108,14 @@
                     new_data.push(mob);
                     // new_data.push(genderf);
                     new_data.push(genderm);
+                    new_data.push(edit,del);
 
                     // console.log(new_data);
 
                     let enterd_data = new_data.map(ele => ele);
                     // console.log(enterd_data);
 
-                    for (var j = 0; j <= 4; j++) {
+                    for (var j = 0; j <= 5; j++) {
                         var col2 = document.createElement("td");
                         col2.append(enterd_data[j])
                         row2.append(col2);
