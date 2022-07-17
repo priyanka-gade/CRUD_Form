@@ -13,7 +13,8 @@
             <h1 class="font-bold text-red-500 font-serif text-2xl">Registration Form</h1>
             <hr class="">
             <form class="m-4 bg-slate-300 border-slate-300 border-2 border-solid w-fill p-3">
-                <label> Name :</label>
+                <label>
+                    Name :</label>
                 <input id="fnid" type="text" placeholder="Piyu Gade"><br><br>
                 <label>Email :</label>
                 <input id="mailid" type="email" placeholder="abc@gmail.com"><br><br>
@@ -21,14 +22,17 @@
                 <input id="mobid" type="tel" placeholder="+91"><br><br>
                 <label>Gender :</label>
                 <select id="gender_id">
+                    <option>Select</option>
                     <option value="Male" id="mid">Male</option>
                     <option value="Female" id="fid">Female</option>
                     <option value="Other" id="oid">Other</option>
                 </select><br><br>
                 <!-- <input id="gid" type="radio" name="gender" value="Male" checked>Male
-                <input id="gid" type="radio" name="gender" value="Female">Female<br><br> -->
-                <button type="button" onclick="list()" class="font-bold border-black border-2 bg-gray-300 rounded p-1">Add</button>
-                <button type="button" class="font-bold border-black border-2 bg-gray-300 rounded p-1">Submit</button>
+                                <input id="gid" type="radio" name="gender" value="Female">Female<br><br> -->
+                <!-- <button type="button" class="font-bold border-black border-2 bg-gray-300 rounded p-1" onclick="btnnew()">New</button> -->
+                <button type="reset" class="font-bold border-black border-2 bg-gray-300 rounded p-1">New</button>
+                <button type="button" onclick="list()" class="font-bold border-black border-2 bg-gray-300 rounded p-1">Submit</button>
+                <!-- <button type="button" class="font-bold border-black border-2 bg-gray-300 rounded p-1" onclick="update()">Update</button> -->
             </form>
         </div><br>
         <div id="mydiv">
@@ -39,22 +43,23 @@
                     <th class="border border-2 border-black p-2">Email-Id</th>
                     <th class="border border-2 border-black p-2">Mobile No.</th>
                     <th class="border border-2 border-black p-2">Gender</th>
-                    <th class="border border-2 border-black p-2">Edit/Delete</th>
-                    <th class="border border-2 border-black p-2">Edit/Delete</th>
+                    <th class="border border-2 border-black p-2">Edit</th>
+                    <th class="border border-2 border-black p-2">Delete</th>
                 </tr>
             </table>
-                    
+
         </div>
-                    <!-- <a><i id="edit" class='fas fa-edit'></i></a>
-                    <a><i id="delete" class="fa fa-trash" aria-hidden="true" ></i></a> -->
-                    <!-- <p id="myp"></p> -->
+        <!-- <a><i id="edit" class='fas fa-edit'></i></a>
+                            <a><i id="delete" class="fa fa-trash" aria-hidden="true" ></i></a> -->
+        <!-- <p id="myp"></p> -->
         <script>
             function list() {
+
 
                 // var tab = document.getElementById("mydiv");
                 // tab.setAttribute("class","visible")
 
-               /* let table = document.createElement("table");
+                /* let table = document.createElement("table");
                 let row1 = document.createElement("tr");
 
                 let mydiv = document.getElementById("mydiv");
@@ -93,75 +98,77 @@
 
 
                 // function data() {
-                    let table = document.getElementById("mytab");
-                    let row2 = document.createElement("tr");
+                let table = document.getElementById("mytab");
+                let row2 = document.createElement("tr");
 
-                    let fn = document.getElementById("fnid").value;
-                    let mail = document.getElementById("mailid").value;
-                    let mob = document.getElementById("mobid").value;
-                    let genderm = document.getElementById("gender_id").value;
-                    // let edit = document.getElementById("edit");
-                    // edit.setAttribute("class","visible");
-                    // let del = document.getElementById("delete");
-                    // del.setAttribute("class","visible");
-                    let edit = document.createElement("a");
-                    let edi =document.createElement("i");
-                    edi.setAttribute("class","fas fa-edit");
-                    function myedit(){
+                var fn = document.getElementById("fnid").value;
+                var mail = document.getElementById("mailid").value;
+                var mob = document.getElementById("mobid").value;
+                var genderm = document.getElementById("gender_id").value;
+                // let edit = document.getElementById("edit");
+                // edit.setAttribute("class","visible");
+                // let del = document.getElementById("delete");
+                // del.setAttribute("class","visible");
+                var edit = document.createElement("a");
+                var edi = document.createElement("i");
+                edi.setAttribute("class", "fas fa-edit");
 
-                    }
-                    edi.addEventListener("click", myedit);
+                edit.append(edi);
+                // console.log(edit);
+                var delte = document.createElement("a");
+                var del = document.createElement("i");
+                del.setAttribute("class", "fa fa-trash");
+                del.setAttribute("aria-hidden", "true");
+                delte.append(del);
+                // console.log(delte);
 
-                    edit.append(edi);
-                    // console.log(edit);
-                    let delte = document.createElement("a");
-                    let del = document.createElement("i");
-                    del.setAttribute("class","fa fa-trash");
-                    del.setAttribute("aria-hidden","true");
-                    delte.append(del);
-                    // console.log(delte);
-                    
-                    // let p = document.getElementById("myp");
-                    // let num = document.createTextNode("0");
-                    // p.append(num);
-                    // console.log(p);
-                    // var count = 0;
-                    //     for(var i=1;i<=10;i++){
-                    //         count+=1;
-                    //         var srno = p.innerText=count;
-                    // }
-                    // console.log(srno);
-                    
 
-                    let new_data = [];
-                    new_data.push(1);
-                    new_data.push(fn);
-                    new_data.push(mail);
-                    new_data.push(mob);
-                    // new_data.push(genderf);
-                    new_data.push(genderm);
-                    new_data.push(edit);
-                    new_data.push(delte);
-                    
+                var new_data = [];
+                new_data.push(1);
+                new_data.push(fn);
+                new_data.push(mail);
+                new_data.push(mob);
+                // new_data.push(genderf);
+                new_data.push(genderm);
+                new_data.push(edit);
+                new_data.push(delte);
 
-                    console.log(new_data);
 
-                    let enterd_data = new_data.map(ele => ele);
-                    // console.log(enterd_data);
+                console.log(new_data);
 
-                    for (var j = 0; j <= 6; j++) {
-                        var col2 = document.createElement("td");
-                        col2.append(enterd_data[j])
-                        row2.append(col2);
-                        table.append(row2);
-                        col2.setAttribute("class", "border border-black text-center p-1");
-                        // console.log(table);
-                    }
-                    console.log(table);
+                var enterd_data = new_data.map(ele => ele);
+                // console.log(enterd_data);
 
+                for (var j = 0; j <= 6; j++) {
+                    var col2 = document.createElement("td");
+                    col2.append(enterd_data[j])
+                    row2.append(col2);
+                    table.append(row2);
+                    col2.setAttribute("class", "border border-black text-center p-1");
+                    // console.log(table);
+                }
+                console.log(table);
+
+                var new_array = [];
+                new_array.push(new_data);
+                console.log(new_array);
 
                 // }
             }
+
+            // function btnnew() {
+            //     fn.value = "";
+            //     mail.value = "";
+            //     mob.value = "";
+            //     genderm.value = "";
+
+            // }
+
+            // function update() {
+            //     // for(var i=0;i<new_data.length;i++){
+            //     //     if(add)
+            //     // }
+            // }
         </script>
     </body>
 </html>
