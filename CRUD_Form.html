@@ -8,11 +8,11 @@
         <script src="https://cdn.tailwindcss.com"></script>
     </head>
     <body>
-        <div>
-            <h1>Registration Form</h1>
+        <div class="grid place-content-center text-center border border-2 border-black w-96 m-4">
+            <h1 class="font-bold text-red-500 font-serif text-2xl">Registration Form</h1>
             <hr class="">
-            <div class="">
-                <label>Name :</label>
+            <form class="m-4 bg-slate-300 border-slate-300 border-2 border-solid w-fill p-3">
+                <label> Name :</label>
                 <input id="fnid" type="text" placeholder="Piyu Gade"><br><br>
                 <label>Email :</label>
                 <input id="mailid" type="email" placeholder="abc@gmail.com"><br><br>
@@ -21,16 +21,33 @@
                 <label>Gender :</label>
                 <input id="mid" type="radio" name="gender" value="Male" checked>Male
                 <input id="fid" type="radio" name="gender" value="Female">Female<br><br>
-                <button type="button" onclick="list()">Add</button>
-                <!-- <button type="button" onclick="data()">Submit</button> -->
-            </div>
+                <button type="button" onclick="list()" class="font-bold border-black border-2 bg-gray-300 rounded p-1">Add</button>
+                <button type="button" class="font-bold border-black border-2 bg-gray-300 rounded p-1">Submit</button>
+            </form>
+        </div><br>
+        <div id="mydiv">
+            <table class="border-2 border-black invisible">
+                <tr>
+                    <th class="border border-2 border-black p-2">SrNo.</th>
+                    <th class="border border-2 border-black p-2">First Name</th>
+                    <th class="border border-2 border-black p-2">Email-Id</th>
+                    <th class="border border-2 border-black p-2">Mobile No.</th>
+                    <th class="border border-2 border-black p-2">Gender</th>
+                    <th class="p-2">Edit/Delete</th>
+                </tr>
+            </table>
         </div>
-        <div></div>
         <script>
             function list() {
+
+                var tab = document.getElementById("mydiv");
+                tab.setAttribute("class","visible")
+
                 let table = document.createElement("table");
                 let row1 = document.createElement("tr");
 
+                let mydiv = document.getElementById("mydiv");
+                mydiv.append(table);
                 // ------IIFE----
                 let table_heading = (function () {
                     let details = [
@@ -62,34 +79,34 @@
                 // let Contact = document.createTextNode("Mobile No.");
 
                 // var count = 1;
-            
 
-            // function data() {
-            let row2 = document.createElement("tr");
 
-            for(var j=0;j<=5;j++){
-                var col2 = document.createElement("td");
-                row2.append(col2);
-                table.append(row2);
+                function data() {
+                    let row2 = document.createElement("tr");
+
+                    for (var j = 0; j <= 5; j++) {
+                        var col2 = document.createElement("td");
+                        row2.append(col2);
+                        table.append(row2);
+                    }
+
+                    let fn = document.getElementById("fnid").value;
+                    let mail = document.getElementById("mailid").value;
+                    let mob = document.getElementById("mobid").value;
+                    let genderm = document.getElementById("mid").value;
+                    // let genderf = document.getElementById("fid").value;
+                    // console.log(genderf);
+
+                    let new_data = [];
+                    new_data.push(fn);
+                    new_data.push(mail);
+                    new_data.push(mob);
+                    // new_data.push(genderf);
+                    new_data.push(genderm);
+
+                    console.log(new_data);
+                }
             }
-
-            let fn = document.getElementById("fnid").value;
-            let mail = document.getElementById("mailid").value;
-            let mob = document.getElementById("mobid").value;
-            let genderm = document.getElementById("mid").value;
-            let genderf = document.getElementById("fid").value;
-            // console.log(genderf);
-
-                let new_data = [];
-                new_data.push(fn);
-                new_data.push(mail);
-                new_data.push(mob);
-                new_data.push(genderf);
-                new_data.push(genderm);
-
-                console.log(new_data);
-            
-        }
         </script>
     </body>
 </html>
