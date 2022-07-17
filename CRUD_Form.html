@@ -40,8 +40,8 @@
         <script>
             function list() {
 
-                var tab = document.getElementById("mydiv");
-                tab.setAttribute("class","visible")
+                // var tab = document.getElementById("mydiv");
+                // tab.setAttribute("class","visible")
 
                /* let table = document.createElement("table");
                 let row1 = document.createElement("tr");
@@ -85,16 +85,10 @@
                     let table = document.getElementById("mytab");
                     let row2 = document.createElement("tr");
 
-                    for (var j = 0; j <= 5; j++) {
-                        var col2 = document.createElement("td");
-                        row2.append(col2);
-                        table.append(row2);
-                    }
-
                     let fn = document.getElementById("fnid").value;
                     let mail = document.getElementById("mailid").value;
                     let mob = document.getElementById("mobid").value;
-                    let genderm = document.getElementById("mid").value;
+                    let genderm = document.getElementById("gid").value;
                     // let genderf = document.getElementById("fid").value;
                     // console.log(genderf);
 
@@ -106,6 +100,18 @@
                     new_data.push(genderm);
 
                     console.log(new_data);
+
+                    let enterd_data = new_data.map(ele => ele);
+                    console.log(enterd_data);
+
+                    for (var j = 0; j <= 5; j++) {
+                        var col2 = document.createElement("td");
+                        col2.append(enterd_data[j])
+                        row2.append(col2);
+                        table.append(row2);
+                        console.log(table);
+                    }
+                    console.log(table);
                 // }
             }
         </script>
