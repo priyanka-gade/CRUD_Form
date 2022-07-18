@@ -9,28 +9,29 @@
         <script src="https://kit.fontawesome.com/a076d05399.js"></script>
     </head>
     <body>
-        <div class="grid place-content-center text-center w-96 m-4 float-left">
+        <div class="text-center w-96 m-4 float-left">
             <h1 class="font-bold text-red-500 font-serif text-2xl">Registration Form</h1>
             <hr class="">
-            <form class="font-serif m-4 bg-slate-300 border-slate-300 border-2 border-solid w-80 p-3">
+            <form class="text-left font-serif m-4 bg-slate-300 border-slate-300 border-2 border-solid w-80 p-4">
                 <label>
                     Name :</label>
-                <input id="fnid" type="text" placeholder="Piyu Gade"><br><br>
+                <input id="fnid" type="text" placeholder="Piyu Gade" required><br><br>
                 <label>Email :</label>
-                <input id="mailid" type="email" placeholder="abc@gmail.com"><br><br>
+                <input id="mailid" type="email" placeholder="abc@gmail.com" required><br><br>
                 <label>Contact :</label>
-                <input id="mobid" type="tel" placeholder="+91"><br><br>
+                <input id="mobid" type="tel" placeholder="+91" required><br><br>
                 <label>Gender :</label>
-                <select id="gender_id">
+                <select id="gender_id" required>
                     <option>Select</option>
                     <option value="Male" id="mid">Male</option>
                     <option value="Female" id="fid">Female</option>
                     <option value="Other" id="oid">Other</option>
                 </select><br><br>
+
                 <!-- <input id="gid" type="radio" name="gender" value="Male" checked>Male
-                                <input id="gid" type="radio" name="gender" value="Female">Female<br><br> -->
+                                                                                                    <input id="gid" type="radio" name="gender" value="Female">Female<br><br> -->
                 <!-- <button type="button" class="font-bold border-black border-2 bg-gray-300 rounded p-1" onclick="btnnew()">New</button> -->
-                <button type="reset" class="font-serif border-black border-2 bg-green-600 text-white rounded p-1">New</button>
+                    <button type="reset" class="font-serif border-black border-2 bg-green-600 text-white rounded p-1"> New</button>
                 <button type="button" onclick="list()" class="font-serif border-black border-2 bg-green-600 text-white rounded p-1">Submit</button>
                 <!-- <button type="button" class="font-bold border-black border-2 bg-gray-300 rounded p-1" onclick="update()">Update</button> -->
             </form>
@@ -50,12 +51,13 @@
 
         </div>
         <!-- <a><i id="edit" class='fas fa-edit'></i></a>
-                            <a><i id="delete" class="fa fa-trash" aria-hidden="true" ></i></a> -->
+                                                            <a><i id="delete" class="fa fa-trash" aria-hidden="true" ></i></a> -->
         <!-- <p id="myp"></p> -->
         <script>
+            var count = 0;
             function list() {
 
-
+                count++;
                 // var tab = document.getElementById("mydiv");
                 // tab.setAttribute("class","visible")
 
@@ -95,91 +97,89 @@
                 // let Contact = document.createTextNode("Mobile No.");
 
                 // var count = 1; */
-
-
-                // function data() {
+                
                 let table = document.getElementById("mytab");
                 let row2 = document.createElement("tr");
-                row2.setAttribute("class","font-serif")
+                row2.setAttribute("class", "font-serif")
 
                 var fn = document.getElementById("fnid").value;
                 var mail = document.getElementById("mailid").value;
-                // mail.setAttribute("class","text-sky-300");
+                // mail.setAttribute("class","text-sky-300");l
                 var mob = document.getElementById("mobid").value;
-                var genderm = document.getElementById("gender_id").value;
+                var gender = document.getElementById("gender_id").value;
                 // let edit = document.getElementById("edit");
                 // edit.setAttribute("class","visible");
                 // let del = document.getElementById("delete");
                 // del.setAttribute("class","visible");
-                var edit = document.createElement("a");
-                var edi = document.createElement("i");
-                edi.setAttribute("class", "fas fa-edit hover:bg-sky-300");
-                             
-                    // edit.addEventListener("click",load_data());
-                    
-                edit.append(edi);
-                console.log(edit);
-                var delte = document.createElement("a");
-                var del = document.createElement("i");
-                del.setAttribute("class", "fa fa-trash hover:bg-sky-300");
-                del.setAttribute("aria-hidden", "true");
-                delte.append(del);
-                // console.log(delte);
+                // var edit = document.createElement("a");
+                var edit = document.createElement("i");
+                edit.setAttribute("class", "a fas fa-edit hover:bg-sky-300");
+                edit.setAttribute("id", "myidi");
+
+                var e = document.getElementById("myidi");
+                e.onclick = function () {
+                    for (var i = 0; i < new_add_data.length; i++) {
+                        if (new_add_data[i].Name == fn) {
+                            new_add_data[i].Mail = mail;
+                            new_add_data[i].Mob = mob;
+                            new_add_data[i].Gender = gender;
+                            break;
+                        }
+                    }
+
+                    // var element = document.getElementById("elem");
+                    // element.onclick = function(event) {
+                    // console.log(event);
+                    // }
+
+                    // edit.append(edi);
+                    // console.log(edit);
+                    var delte = document.createElement("a");
+                    var del = document.createElement("i");
+                    del.setAttribute("class", "fa fa-trash hover:bg-sky-300");
+                    del.setAttribute("aria-hidden", "true");
+                    delte.append(del);
+                    // console.log(delte);
+
+                    var new_data = [];
+                    new_data.push(count);
+                    new_data.push(fn);
+                    new_data.push(mail);
+                    new_data.push(mob);
+                    new_data.push(gender);
+                    new_data.push(edit);
+                    new_data.push(delte);
+                    console.log(new_data);
 
 
-                var new_data = [];
-                new_data.push(1);
-                new_data.push(fn);
-                new_data.push(mail);
-                new_data.push(mob);
-                // new_data.push(genderf);
-                new_data.push(genderm);
-                new_data.push(edit);
-                new_data.push(delte);
+                    function add_data(ipsr, ipfn, ipmail, ipmob, ipGender) {
+                        this.Srno = ipsr;
+                        this.Name = ipfn;
+                        this.Mail = ipmail;
+                        this.Mob = ipmob;
+                        this.Gender = ipGender;
 
+                    }
+                    var new_add_data = [new add_data("1", "Priya Gade", "pg@gmail.com", "7020324332", "Female")];
 
-                console.log(new_data);
+                    new_add_data.push(new_data);
+                    console.log(new_add_data);
 
-                var enterd_data = new_data.map(ele => ele);
-                // console.log(enterd_data);
+                    var enterd_data = new_data.map(ele => ele);
+                    // console.log(enterd_data);
 
-                for (var j = 0; j <= 6; j++) {
-                    var col2 = document.createElement("td");
-                    col2.append(enterd_data[j])
-                    row2.append(col2);
-                    table.append(row2);
-                    col2.setAttribute("class", "border border-black text-center p-1");
-                    // console.log(table);
+                    for (var j = 0; j <= 6; j++) {
+                        var col2 = document.createElement("td");
+                        col2.append(enterd_data[j])
+                        row2.append(col2);
+                        table.append(row2);
+                        col2.setAttribute("class", "border border-black text-center p-1");
+                        // console.log(table);
+                    }
+                    console.log(table);
                 }
-                console.log(table);
-
-                var new_array = [];
-                new_array.push(new_data);
-                console.log(new_array);
-
-                // }
-            }
-
-        //     function add_data(ipfn, ipmail, ipmob, ipGender)
-        // {
-        //     this.Name=ipfn;
-        //     this.Mail=ipmail;
-        //     this.Mob=ipmob;
-        //     this.Gender-ipGender;
-            
-        // }
-        // var new_add_data= [
-        //     new add_data("Priya Gade", "pg@gmail.com","7020324332","Female")
-        // ];
-
-        
-
-        // function btnSaveClick()
-        // {
-        //     addNewData.push(new add_data(txtName.value, txtGender.value, txtCity.value));
-        //     loadElementdata();
-        // }
-
-        </script>
+                </script>
+            </body>
+        </body>
     </body>
 </html>
