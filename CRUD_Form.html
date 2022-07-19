@@ -55,8 +55,19 @@
         <!-- <p id="myp"></p> -->
         <script>
             var count = 0;
-            function list() {
+            function add_data(ipsr, ipfn, ipmail, ipmob, ipGender) {
+                        this.Srno = ipsr;
+                        this.Name = ipfn;
+                        this.Mail = ipmail;
+                        this.Mob = ipmob;
+                        this.Gender = ipGender;
 
+                    }
+                    var new_add_data = [new add_data("1", "Priya Gade", "pg@gmail.com", "7020324332", "Female")];
+                    console.log(new_add_data)
+                    
+            function list() 
+            {
                 count++;
                 // var tab = document.getElementById("mydiv");
                 // tab.setAttribute("class","visible")
@@ -97,7 +108,7 @@
                 // let Contact = document.createTextNode("Mobile No.");
 
                 // var count = 1; */
-                
+
                 let table = document.getElementById("mytab");
                 let row2 = document.createElement("tr");
                 row2.setAttribute("class", "font-serif")
@@ -111,34 +122,22 @@
                 // edit.setAttribute("class","visible");
                 // let del = document.getElementById("delete");
                 // del.setAttribute("class","visible");
-                // var edit = document.createElement("a");
-                var edit = document.createElement("i");
-                edit.setAttribute("class", "a fas fa-edit hover:bg-sky-300");
-                edit.setAttribute("id", "myidi");
 
-                var e = document.getElementById("myidi");
-                e.onclick = function () {
-                    for (var i = 0; i < new_add_data.length; i++) {
-                        if (new_add_data[i].Name == fn) {
-                            new_add_data[i].Mail = mail;
-                            new_add_data[i].Mob = mob;
-                            new_add_data[i].Gender = gender;
-                            break;
-                        }
-                    }
-
-                    // var element = document.getElementById("elem");
-                    // element.onclick = function(event) {
-                    // console.log(event);
-                    // }
-
+                // var btn = document.createElement("button");
+                // var tn = document.createTextNode("Edit");
+                
+                // // var iconedit = document.createElement("i");
+                // // iconedit.setAttribute("class", "fas fa-edit hover:bg-sky-300");
+                // btn.append(tn);
+                                
+                
                     // edit.append(edi);
                     // console.log(edit);
-                    var delte = document.createElement("a");
-                    var del = document.createElement("i");
-                    del.setAttribute("class", "fa fa-trash hover:bg-sky-300");
-                    del.setAttribute("aria-hidden", "true");
-                    delte.append(del);
+                    // var delte = document.createElement("i");
+                    // // var del = document.createElement("i");
+                    // delte.setAttribute("class", "fa fa-trash hover:bg-sky-300");
+                    // delte.setAttribute("aria-hidden", "true");
+                    // delte.append(del);
                     // console.log(delte);
 
                     var new_data = [];
@@ -147,30 +146,20 @@
                     new_data.push(mail);
                     new_data.push(mob);
                     new_data.push(gender);
-                    new_data.push(edit);
-                    new_data.push(delte);
-                    console.log(new_data);
-
-
-                    function add_data(ipsr, ipfn, ipmail, ipmob, ipGender) {
-                        this.Srno = ipsr;
-                        this.Name = ipfn;
-                        this.Mail = ipmail;
-                        this.Mob = ipmob;
-                        this.Gender = ipGender;
-
-                    }
-                    var new_add_data = [new add_data("1", "Priya Gade", "pg@gmail.com", "7020324332", "Female")];
+                    new_data.push(ebtn);
+                    new_data.push(dbtn);
+                    // console.log(new_data);
 
                     new_add_data.push(new_data);
                     console.log(new_add_data);
+                    
 
                     var enterd_data = new_data.map(ele => ele);
                     // console.log(enterd_data);
 
                     for (var j = 0; j <= 6; j++) {
                         var col2 = document.createElement("td");
-                        col2.append(enterd_data[j])
+                        col2.append(enterd_data[j]);
                         row2.append(col2);
                         table.append(row2);
                         col2.setAttribute("class", "border border-black text-center p-1");
@@ -178,6 +167,31 @@
                     }
                     console.log(table);
                 }
+
+                var ebtn = document.createElement("button");
+                ebtn.setAttribute("class","font-serif border-white border-2 bg-green-600 text-white rounded p-1")
+                var tne = document.createTextNode("Edit");
+
+                var dbtn = document.createElement("button");
+                dbtn.setAttribute("class","font-serif border-white border-2 bg-red-600 text-white rounded p-1")
+
+                var tnd = document.createTextNode("Delete");
+                
+                ebtn.append(tne);
+                dbtn.append(tnd);
+
+                ebtn.onclick = function () {
+                    for (var i = 0; i < new_add_data.length; i++) {
+                        if (new_add_data[i].Name == fn) {
+                            new_add_data[i].Mail = mail;
+                            new_add_data[i].Mob = mob;
+                            new_add_data[i].Gender = gender;
+                            break;
+                        }
+                        list();
+                    }
+                }
+
                 </script>
             </body>
         </body>
