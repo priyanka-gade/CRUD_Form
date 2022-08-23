@@ -85,28 +85,37 @@
                 users.forEach((ele,i) => {
                     var tr = document.createElement('tr');
                     var td = document.createElement('td');
-                    var td = document.createElement('td');
-                    var td = document.createElement('td');
-                    var td = document.createElement('td');
-                    var td = document.createElement('td');
-                    var td = document.createElement('td');
 
                     let srno = document.createTextNode(i + 1);
-                    let name = document.createTextNode(ele.Name);
-                    let email = document.createTextNode(ele.Email);
-                    let mob = document.createTextNode(ele.Mobile);
-                    let gender = document.createTextNode(ele.Gender);
-
                     td.append(srno);
                     tr.append(td);
+                    td.setAttribute("class", "border border-2 border-black p-2");
+
+                    var td = document.createElement('td');
+                    let name = document.createTextNode(ele.Name);
                     td.append(name);
                     tr.append(td);
+                    td.setAttribute("class", "border border-2 border-black p-2");
+
+                    var td = document.createElement('td');
+                    let email = document.createTextNode(ele.Email);
                     td.append(email);
                     tr.append(td);
+                    td.setAttribute("class", "border border-2 border-black p-2");
+
+                    var td = document.createElement('td');
+                    let mob = document.createTextNode(ele.Mobile);
                     td.append(mob);
                     tr.append(td);
                     td.setAttribute("class", "border border-2 border-black p-2");
 
+                    var td = document.createElement('td');
+                    let gender = document.createTextNode(ele.Gender);
+                    td.append(gender);
+                    tr.append(td);
+                    td.setAttribute("class", "border border-2 border-black p-2");
+
+                    var td = document.createElement('td');
                     var button = document.createElement('button');
                     let editbutton = document.createTextNode("Edit");
                     button.addEventListener('click',()=>{
@@ -143,18 +152,8 @@
                     table.append(tr);
                 });
             }
-            function resetFormValues() {
-                console.log("reset call");
-                const myButton = document.getElementById('submit');
-                myButton.innerText = 'Submit';
-                isEdit = false;
-                indexOfEdit = -1;
-
-                 document.getElementById('fnid').value = '';
-                document.getElementById('mailid').value = '';
-                document.getElementById('mobid').value = '';
-                document.getElementById('gender_id').value = '';
-            }
+            
+            
         </script> 
         </body>
     </body>
