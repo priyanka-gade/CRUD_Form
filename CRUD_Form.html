@@ -53,7 +53,7 @@
         <!-- <a><i id="edit" class='fas fa-edit'></i></a>
                                                             <a><i id="delete" class="fa fa-trash" aria-hidden="true" ></i></a> -->
         <!-- <p id="myp"></p> -->
-        <script>
+                <script>
             var count = 0;
             function add_data(ipsr, ipfn, ipmail, ipmob, ipGender) {
                         this.Srno = ipsr;
@@ -66,48 +66,18 @@
                     var new_add_data = [new add_data("1", "Priya Gade", "pg@gmail.com", "7020324332", "Female")];
                     console.log(new_add_data)
                     
+                    var ebtn = document.createElement("button");
+                    ebtn.setAttribute("class","font-serif border-white border-2 bg-green-600 text-white rounded p-1")
+                    var tne = document.createTextNode("Edit");
+
+                    var dbtn = document.createElement("button");
+                    dbtn.setAttribute("class","font-serif border-white border-2 bg-red-600 text-white rounded p-1")
+
+                    var tnd = document.createTextNode("Delete");
+                
             function list() 
             {
                 count++;
-                // var tab = document.getElementById("mydiv");
-                // tab.setAttribute("class","visible")
-
-                /* let table = document.createElement("table");
-                let row1 = document.createElement("tr");
-
-                let mydiv = document.getElementById("mydiv");
-                mydiv.append(table);
-                // ------IIFE----
-                let table_heading = (function () {
-                    let details = [
-                        "SrNo",
-                        "First Name",
-                        "Email-Id",
-                        "Mobile No.",
-                        "Gender",
-                        "Edit/Delete"
-                    ]
-                    // ----map----
-                    let heading = details.map(ele => {
-                        return document.createTextNode(ele);
-                    })
-                    // console.log(heading);
-                    for (var i = 0; i <= 5; i++) {
-                        var col = document.createElement("th");
-                        // console.log(co);
-                        col.append(heading[i]);
-                        row1.append(col);
-                        table.append(row1);
-                    }
-                    console.log(table);
-                })();
-
-                // let srno =
-                // let fn =document.createTextNode("First Name");
-                // let mail = document.createTextNode("Email-Id");
-                // let Contact = document.createTextNode("Mobile No.");
-
-                // var count = 1; */
 
                 let table = document.getElementById("mytab");
                 let row2 = document.createElement("tr");
@@ -118,27 +88,10 @@
                 // mail.setAttribute("class","text-sky-300");l
                 var mob = document.getElementById("mobid").value;
                 var gender = document.getElementById("gender_id").value;
-                // let edit = document.getElementById("edit");
-                // edit.setAttribute("class","visible");
-                // let del = document.getElementById("delete");
-                // del.setAttribute("class","visible");
-
-                // var btn = document.createElement("button");
-                // var tn = document.createTextNode("Edit");
                 
-                // // var iconedit = document.createElement("i");
-                // // iconedit.setAttribute("class", "fas fa-edit hover:bg-sky-300");
-                // btn.append(tn);
-                                
-                
-                    // edit.append(edi);
-                    // console.log(edit);
-                    // var delte = document.createElement("i");
-                    // // var del = document.createElement("i");
-                    // delte.setAttribute("class", "fa fa-trash hover:bg-sky-300");
-                    // delte.setAttribute("aria-hidden", "true");
-                    // delte.append(del);
-                    // console.log(delte);
+                    
+                    ebtn.append(tne);
+                    dbtn.append(tnd);
 
                     var new_data = [];
                     new_data.push(count);
@@ -148,7 +101,7 @@
                     new_data.push(gender);
                     new_data.push(ebtn);
                     new_data.push(dbtn);
-                    // console.log(new_data);
+
 
                     new_add_data.push(new_data);
                     console.log(new_add_data);
@@ -157,8 +110,12 @@
                     var enterd_data = new_data.map(ele => ele);
                     // console.log(enterd_data);
 
+                    
+
                     for (var j = 0; j <= 6; j++) {
                         var col2 = document.createElement("td");
+                        // col2.append(ebtn);
+                        // col2.append(dbtn);
                         col2.append(enterd_data[j]);
                         row2.append(col2);
                         table.append(row2);
@@ -167,31 +124,29 @@
                     }
                     console.log(table);
                 }
-
-                var ebtn = document.createElement("button");
-                ebtn.setAttribute("class","font-serif border-white border-2 bg-green-600 text-white rounded p-1")
-                var tne = document.createTextNode("Edit");
-
-                var dbtn = document.createElement("button");
-                dbtn.setAttribute("class","font-serif border-white border-2 bg-red-600 text-white rounded p-1")
-
-                var tnd = document.createTextNode("Delete");
-                
-                ebtn.append(tne);
-                dbtn.append(tnd);
-
-                ebtn.onclick = function () {
+             
+                ebtn.addEventListener("click", editData); 
+                 
+                function editData() {
                     for (var i = 0; i < new_add_data.length; i++) {
-                        if (new_add_data[i].Name == fn) {
+                        if (new_add_data[i].Name = fn) {
                             new_add_data[i].Mail = mail;
                             new_add_data[i].Mob = mob;
                             new_add_data[i].Gender = gender;
+                            // new_add_data[i].Edit = ebtn;
+                            // new_add_data[i].Delete = dbtn;
                             break;
                         }
                         list();
                     }
                 }
 
+                dbtn.addEventListener("click", deleteData);
+
+                function deleteData(i) {
+                    console.log("hi")
+                    this.new_add_data.splice(i, 1);
+                }
                 </script>
             </body>
         </body>
