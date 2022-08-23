@@ -28,11 +28,8 @@
                     <option value="Other" id="oid">Other</option>
                 </select><br><br>
 
-                <!-- <input id="gid" type="radio" name="gender" value="Male" checked>Male
-                                                                                                    <input id="gid" type="radio" name="gender" value="Female">Female<br><br> -->
-                <!-- <button type="button" class="font-bold border-black border-2 bg-gray-300 rounded p-1" onclick="btnnew()">New</button> -->
-                    <button type="reset" class="font-serif border-black border-2 bg-green-600 text-white rounded p-1"> New</button>
-                <button type="button" onclick="list()" class="font-serif border-black border-2 bg-green-600 text-white rounded p-1">Submit</button>
+              <button type="reset" onclick="resetFormValues()" class="font-serif border-black border-2 bg-green-600 text-white rounded p-1"> New</button>
+                <button id="submit" type="button" onclick="submitFormValues()"class="font-serif border-black border-2 bg-green-600 text-white rounded p-1">Submit</button>
                 <!-- <button type="button" class="font-bold border-black border-2 bg-gray-300 rounded p-1" onclick="update()">Update</button> -->
             </form>
         </div><br>
@@ -48,107 +45,117 @@
                     <th class="border border-2 border-black p-2">Delete</th>
                 </tr>
             </table>
-
         </div>
-        <!-- <a><i id="edit" class='fas fa-edit'></i></a>
-                                                            <a><i id="delete" class="fa fa-trash" aria-hidden="true" ></i></a> -->
-        <!-- <p id="myp"></p> -->
-                <script>
-            var count = 0;
-            function add_data(ipsr, ipfn, ipmail, ipmob, ipGender) {
-                        this.Srno = ipsr;
-                        this.Name = ipfn;
-                        this.Mail = ipmail;
-                        this.Mob = ipmob;
-                        this.Gender = ipGender;
 
-                    }
-                    var new_add_data = [new add_data("1", "Priya Gade", "pg@gmail.com", "7020324332", "Female")];
-                    console.log(new_add_data)
-                    
-                    var ebtn = document.createElement("button");
-                    ebtn.setAttribute("class","font-serif border-white border-2 bg-green-600 text-white rounded p-1")
-                    var tne = document.createTextNode("Edit");
+        <script>
+            var table = document.getElementById('mytab');
+            users = []; 
+            isEdit=false; 
+            indexOfEdit=-1;
 
-                    var dbtn = document.createElement("button");
-                    dbtn.setAttribute("class","font-serif border-white border-2 bg-red-600 text-white rounded p-1")
-
-                    var tnd = document.createTextNode("Delete");
+            function submitFormValues() {
                 
-            function list() 
-            {
-                count++;
-
-                let table = document.getElementById("mytab");
-                let row2 = document.createElement("tr");
-                row2.setAttribute("class", "font-serif")
-
-                var fn = document.getElementById("fnid").value;
-                var mail = document.getElementById("mailid").value;
-                // mail.setAttribute("class","text-sky-300");l
-                var mob = document.getElementById("mobid").value;
-                var gender = document.getElementById("gender_id").value;
+                const userObj = {
+                    Name: document.getElementById('fnid').value,
+                    Email: document.getElementById('mailid').value,
+                    Mobile: document.getElementById('mobid').value,
+                    Gender: document.getElementById('gender_id').value
+                };
+        
+                if(isEdit===true){
+                    users[indexOfEdit]=userObj;
+                    indexOfEdit=-1;
+                    isEdit=false;
+                    let b=document.getElementById('submit');
+                    b.innerText='Submit';
+                }
+              else{
+                    users.push(userObj);
+                 }
                 
-                    
-                    ebtn.append(tne);
-                    dbtn.append(tnd);
+                document.getElementById('fnid').value = '';
+                document.getElementById('mailid').value = '';
+                document.getElementById('mobid').value = '';
+                document.getElementById('gender_id').value = '';
+                table.innerHTML = '';
+                createTable();
+            }
 
-                    var new_data = [];
-                    new_data.push(count);
-                    new_data.push(fn);
-                    new_data.push(mail);
-                    new_data.push(mob);
-                    new_data.push(gender);
-                    new_data.push(ebtn);
-                    new_data.push(dbtn);
+            function createTable() {
+                users.forEach((ele,i) => {
+                    var tr = document.createElement('tr');
+                    var td = document.createElement('td');
+                    var td = document.createElement('td');
+                    var td = document.createElement('td');
+                    var td = document.createElement('td');
+                    var td = document.createElement('td');
+                    var td = document.createElement('td');
 
+                    let srno = document.createTextNode(i + 1);
+                    let name = document.createTextNode(ele.Name);
+                    let email = document.createTextNode(ele.Email);
+                    let mob = document.createTextNode(ele.Mobile);
+                    let gender = document.createTextNode(ele.Gender);
 
-                    new_add_data.push(new_data);
-                    console.log(new_add_data);
-                    
+                    td.append(srno);
+                    tr.append(td);
+                    td.append(name);
+                    tr.append(td);
+                    td.append(email);
+                    tr.append(td);
+                    td.append(mob);
+                    tr.append(td);
+                    td.setAttribute("class", "border border-2 border-black p-2");
 
-                    var enterd_data = new_data.map(ele => ele);
-                    // console.log(enterd_data);
+                    var button = document.createElement('button');
+                    let editbutton = document.createTextNode("Edit");
+                    button.addEventListener('click',()=>{
+                        console.log("edit clicked");
+                        document.getElementById('fnid').value= users[i].Name;
+                        document.getElementById('mailid').value= users[i].Email;
+                        document.getElementById('mobid').value= users[i].Mobile;
+                        document.getElementById('gender_id').value= users[i].Gender;
+                        isEdit=true;
+                        indexOfEdit=i;
+                        const myButton = document.getElementById('submit');
+                        myButton.innerText = 'Update';
+                    })
+                    button.append(editbutton);
+                    button.setAttribute("class", "font-serif border-white border-2 bg-green-600 text-white rounded p-1");
+                    td.setAttribute("class", "border border-2 border-black p-2");
+                    td.append(button);
+                    tr.append(td);
 
-                    
+                    var td = document.createElement('td');
+                    var button = document.createElement('button');
+                    let deletebutton = document.createTextNode("Delete");
+                    button.addEventListener('click', () => {
+                        table.innerHTML = '';
+                        console.log(users[i]);
+                        users.splice(i, 1);
+                        createTable();
+                    });
+                    button.append(deletebutton);
+                    button.setAttribute("class", "font-serif border-white border-2 bg-red-600 text-white rounded p-1");
+                    td.setAttribute("class", "border border-2 border-black p-2");
+                    td.append(button);
+                    tr.append(td);
+                    table.append(tr);
+                });
+            }
+            function resetFormValues() {
+                console.log("reset call");
+                const myButton = document.getElementById('submit');
+                myButton.innerText = 'Submit';
+                isEdit = false;
+                indexOfEdit = -1;
 
-                    for (var j = 0; j <= 6; j++) {
-                        var col2 = document.createElement("td");
-                        // col2.append(ebtn);
-                        // col2.append(dbtn);
-                        col2.append(enterd_data[j]);
-                        row2.append(col2);
-                        table.append(row2);
-                        col2.setAttribute("class", "border border-black text-center p-1");
-                        // console.log(table);
-                    }
-                    console.log(table);
-                }
-             
-                ebtn.addEventListener("click", editData); 
-                 
-                function editData() {
-                    for (var i = 0; i < new_add_data.length; i++) {
-                        if (new_add_data[i].Name = fn) {
-                            new_add_data[i].Mail = mail;
-                            new_add_data[i].Mob = mob;
-                            new_add_data[i].Gender = gender;
-                            // new_add_data[i].Edit = ebtn;
-                            // new_add_data[i].Delete = dbtn;
-                            break;
-                        }
-                        list();
-                    }
-                }
-
-                dbtn.addEventListener("click", deleteData);
-
-                function deleteData(i) {
-                    console.log("hi")
-                    this.new_add_data.splice(i, 1);
-                }
-                </script>
-            </body>
+                 document.getElementById('fnid').value = '';
+                document.getElementById('mailid').value = '';
+                document.getElementById('mobid').value = '';
+                document.getElementById('gender_id').value = '';
+            }
+        </script> 
         </body>
     </body>
 </html>
